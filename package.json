@@ -1,0 +1,19 @@
+{
+  "name": "com.studyspot.app",
+  "displayName": "StudySpot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cordova wrapper for the StudySpot Ionic app",
+  "cordova": {
+    "platforms": [
+      "android"
+    ],
+    "plugins": {
+      "cordova-plugin-studyspot": {}
+    }
+  },
+  "devDependencies": {
+    "cordova-android": "^15.1.0",
+    "cordova-plugin-studyspot": "file:plugins-src/cordova-plugin-studyspot"
+  }
+}

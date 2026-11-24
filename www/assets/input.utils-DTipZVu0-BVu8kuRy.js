@@ -1,0 +1,1 @@
+import{f as e}from"./index-Cn7hMmGH.js";var t=(t,r,i)=>{let a=t==null?0:t.toString().length,o=n(a,r);if(i===void 0)return o;try{return i(a,r)}catch(t){return e("[ion-input] - Exception in provided `counterFormatter`:",t),o}},n=(e,t)=>`${e} / ${t}`;export{t};

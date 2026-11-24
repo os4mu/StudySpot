@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.studyspot.app" version="1.0.0"
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>StudySpot</name>
+    <description>Find, rate and pin your favorite study spots.</description>
+    <author email="you@example.com" href="https://example.com">StudySpot Team</author>
+    <content src="index.html" />
+
+    <!-- No <access>, <allow-navigation> or <allow-intent>: no network, no external links. -->
+
+    <preference name="Scheme" value="https" />
+    <preference name="Orientation" value="default" />
+    <preference name="KeepRunning" value="true" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="26" />
+    <preference name="android-targetSdkVersion" value="34" />
+
+    <hook type="after_prepare" src="hooks/strip-permissions.js" />
+
+    <platform name="android">
+        <!-- Saved locations are sensitive: no cloud backup, no cleartext traffic. -->
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <application android:allowBackup="false" android:usesCleartextTraffic="false" />
+        </edit-config>
+    </platform>
+</widget>

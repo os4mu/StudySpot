@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="cordova-plugin-studyspot" version="1.0.0"
+        xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>StudySpot</name>
+    <description>Permission states, foreground shake-pin service, and share sheet for StudySpot.</description>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="StudySpot">
+                <param name="android-package" value="com.studyspot.plugin.StudySpotPlugin" />
+            </feature>
+        </config-file>
+
+        <!-- Every permission the app uses is declared here (and nowhere else). -->
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.CAMERA" />
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+            <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+            <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+            <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+            <uses-permission android:name="android.permission.VIBRATE" />
+            <uses-permission android:name="android.permission.WAKE_LOCK" />
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <service android:name="com.studyspot.plugin.StudySpotService"
+                     android:exported="false"
+                     android:foregroundServiceType="location" />
+            <provider android:name="com.studyspot.plugin.StudySpotFileProvider"
+                      android:authorities="${applicationId}.studyspot.fileprovider"
+                      android:exported="false"
+                      android:grantUriPermissions="true">
+                <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
+                           android:resource="@xml/studyspot_file_paths" />
+            </provider>
+        </config-file>
+
+        <source-file src="src/android/StudySpotPlugin.java" target-dir="src/com/studyspot/plugin" />
+        <source-file src="src/android/StudySpotService.java" target-dir="src/com/studyspot/plugin" />
+        <source-file src="src/android/StudySpotFileProvider.java" target-dir="src/com/studyspot/plugin" />
+        <resource-file src="src/android/studyspot_file_paths.xml" target="res/xml/studyspot_file_paths.xml" />
+    </platform>
+</plugin>
